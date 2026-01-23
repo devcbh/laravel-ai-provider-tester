@@ -9,6 +9,7 @@ use Devcbh\LaravelAiProvider\DTOs\Message;
 use Illuminate\Support\Facades\File;
 use Devcbh\LaravelAiProvider\Templates\SummarizationTemplate;
 use Illuminate\Support\Facades\Process;
+use Devcbh\LaravelAiProvider\Templates\TranslationTemplate;
 
 class AiController extends Controller
 {
@@ -87,6 +88,23 @@ class AiController extends Controller
             'commit' => $commitHash,
             'explanation' => $explanation
         ]);
+    }
+
+    //for multiligual chat
+    public function translation(){
+        $translated = Ai::template(new TranslationTemplate(), [
+            'text' => 'How can I reset my password?',
+            'target_language' => 'Filipino'
+        ])->ask('Translate only.');
+        return response()->json(['translation' => $translated]);
+    }
+
+    public function translation1(){
+        $translated = Ai::template(new TranslationTemplate(), [
+            'text' => 'パスワードをリセットする方法はありますか？',
+            'target_language' => 'English'
+        ])->ask('Translate only.');
+        return response()->json(['translation' => $translated]);
     }
 
     //masking of details and other things, mask things and send to ai and unmask details using internal must have mask_column that has temporary name or logic
