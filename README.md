@@ -7,6 +7,84 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## AI Provider Tester
+
+This project is set up to test the `devcbh/laravel-ai-provider` package.
+
+### Installation & Setup
+
+1.  **Install dependencies:**
+    ```bash
+    composer install
+    ```
+2.  **Configure your AI providers:**
+    Open `.env` and add your API keys:
+    ```env
+    OPENAI_API_KEY=your_key_here
+    GEMINI_API_KEY=your_key_here
+    # etc.
+    ```
+    You can also customize settings in `config/ai.php`.
+
+### Quick Test Command
+
+A command has been added to quickly test any AI driver:
+
+```bash
+php artisan ai:test "Why is the sky blue?" --driver=openai
+```
+
+**Options:**
+- `prompt`: (Optional) The message to send. Default: "Hello?"
+- `--driver`: (Optional) Specify the driver (`openai`, `gemini`, `claude`, `mistral`, `ollama`). Defaults to `ai.default` config.
+
+### Basic Usage Example
+
+```php
+use Devcbh\LaravelAiProvider\Facades\Ai;
+
+$response = Ai::role('You are a helpful assistant.')
+    ->ask('Tell me a joke.');
+
+echo $response;
+```
+
+### API Usage Example (Controller)
+
+You can also use the AI provider in your controllers.
+
+**Controller (`app/Http/Controllers/AiController.php`):**
+
+```php
+namespace App\Http\Controllers;
+
+use Devcbh\LaravelAiProvider\Facades\Ai;
+
+class AiController extends Controller
+{
+    public function ask()
+    {
+        $response = Ai::role('You are a helpful assistant.')
+            ->ask('What is the capital of France?');
+
+        return response()->json([
+            'answer' => $response
+        ]);
+    }
+}
+```
+
+**Route (`routes/api.php`):**
+
+```php
+use App\Http\Controllers\AiController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/ai-ask', [AiController::class, 'ask']);
+```
+
+---
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
