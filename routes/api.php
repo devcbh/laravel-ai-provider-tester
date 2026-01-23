@@ -14,3 +14,5 @@ Route::get('/ai/test', [AiController::class,'test'])->name('ai.test');
 Route::get('/ai-ask', [AiController::class, 'ask']);
 Route::get('/ai/testTemplate', [AiController::class,'testTemplate'])->name('ai.testTemplate');
 Route::get('/ai/testWithContext', [AiController::class,'testWithContext'])->name('ai.testWithContext');
+Route::get('/ai/analyzeDirectory', [AiController::class,'analyzeDirectory'])->name('ai.analyzeDirectory');
+Route::get('/ai/explain-commit/{hash?}', [AiController::class, 'explainCommit'])->name('ai.explainCommit');
