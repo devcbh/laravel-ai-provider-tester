@@ -18,3 +18,4 @@ Route::get('/ai/analyzeDirectory', [AiController::class,'analyzeDirectory'])->na
 Route::get('/ai/explain-commit/{hash?}', [AiController::class, 'explainCommit'])->name('ai.explainCommit');
 Route::get('/ai/translation', [AiController::class, 'translation'])->name('ai.translation');
 Route::get('/ai/translation1', [AiController::class, 'translation1'])->name('ai.translation1');
+Route::post('/ai/monday', [AiController::class, 'mondayDuplicate'])->name('ai.monday');

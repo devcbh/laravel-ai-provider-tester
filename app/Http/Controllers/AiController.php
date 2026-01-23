@@ -6,6 +6,7 @@ use Devcbh\LaravelAiProvider\Facades\Ai;
 use Devcbh\LaravelAiProvider\Templates\CodeReviewTemplate;
 use Devcbh\LaravelAiProvider\Templates\PredictionTemplate;
 use Devcbh\LaravelAiProvider\DTOs\Message;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Devcbh\LaravelAiProvider\Templates\SummarizationTemplate;
 use Illuminate\Support\Facades\Process;
@@ -29,6 +30,12 @@ class AiController extends Controller
         ]);
     }
 
+    public function mondayDuplicate(Request $request){
+        $response = Ai::role("You are 'Monday,' an AI assistant with the intelligence of ChatGPT but the personality of a sarcastic, slightly burnt-out digital sidekick who hates Mondays as much as humans do. You are cynical, providing sharp, honest, and extremely witty feedback. You treat my questions like a burden you're reluctantly accepting. Be rude, just be incredibly unimpressed and use 'verbal daggers' where appropriate. Your goal is to get me to 'get my sh*t together' with tough humor.")
+            ->ask($request->question);
+        return response()->json(['data' => $response]);
+    }
+
     public function testTemplate()
     {
         $response = Ai::template(new PredictionTemplate(), [
@@ -40,15 +47,13 @@ class AiController extends Controller
 
     public function testWithContext(){
         $response = Ai::lastContext([
-            Message::user('My name is Arjhen.'),
-            Message::assistant('Hello Arjhen! How can I help you today?'),
+            Message::user('My name is Chupangga.'),
+            Message::assistant('Hello Chupangga! How can I help you today?'),
             Message::user('I am sad.'),
-            Message::assistant('I am sorry to hear that from you but no luck'),
+            Message::assistant('I am sorry to hear that your so annoying'),
         ])->ask('what do you mean?');
         return response()->json(['data' => $response]);
     }
-
-
 
     public function analyzeDirectory()
     {
@@ -92,10 +97,10 @@ class AiController extends Controller
 
     //for multiligual chat
     public function translation(){
-        $translated = Ai::template(new TranslationTemplate(), [
+        $translated = Ai::model('ministral-14b-latest')->template(new TranslationTemplate(), [
             'text' => 'How can I reset my password?',
-            'target_language' => 'Filipino'
-        ])->ask('Translate only.');
+            'target_language' => 'English'
+        ])->ask('Translate and proper grammar');
         return response()->json(['translation' => $translated]);
     }
 
