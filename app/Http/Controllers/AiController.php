@@ -97,7 +97,7 @@ class AiController extends Controller
 
     //for multiligual chat
     public function translation(){
-        $translated = Ai::model('ministral-14b-latest')->template(new TranslationTemplate(), [
+        $translated = Ai::template(new TranslationTemplate(), [
             'text' => 'How can I reset my password?',
             'target_language' => 'English'
         ])->ask('Translate and proper grammar');
