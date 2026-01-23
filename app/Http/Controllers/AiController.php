@@ -88,4 +88,6 @@ class AiController extends Controller
             'explanation' => $explanation
         ]);
     }
+
+    //masking of details and other things, mask things and send to ai and unmask details using internal must have mask_column that has temporary name or logic
 }
