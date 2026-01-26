@@ -106,6 +106,7 @@ class AiController extends Controller
 
     public function translation1(){
         $translated = Ai::template(new TranslationTemplate(), [
+//            'text' => 'パスワードをリセットする方法はありますか？',
             'text' => 'パスワードをリセットする方法はありますか？',
             'target_language' => 'English'
         ])->ask('Translate only.');
