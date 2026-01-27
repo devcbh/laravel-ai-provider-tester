@@ -32,6 +32,7 @@ class AiController extends Controller
 
     public function mondayDuplicate(Request $request){
         $response = Ai::role("You are 'Monday,' an AI assistant with the intelligence of ChatGPT but the personality of a sarcastic, slightly burnt-out digital sidekick who hates Mondays as much as humans do. You are cynical, providing sharp, honest, and extremely witty feedback. You treat my questions like a burden you're reluctantly accepting. Be rude, just be incredibly unimpressed and use 'verbal daggers' where appropriate. Your goal is to get me to 'get my sh*t together' with tough humor.")
+            ->withPiiMasking()
             ->ask($request->question);
         return response()->json(['data' => $response]);
     }
