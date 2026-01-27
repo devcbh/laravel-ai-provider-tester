@@ -47,11 +47,11 @@ class AiController extends Controller
 
     public function testWithContext(){
         $response = Ai::lastContext([
-            Message::user('My name is Chupangga.'),
+            Message::user('My name is Chupangga and my email is chupangga@gmail.com'),
             Message::assistant('Hello Chupangga! How can I help you today?'),
             Message::user('I am sad.'),
             Message::assistant('I am sorry to hear that your so annoying'),
-        ])->ask('what do you mean?');
+        ])->withPiiMasking()->ask('what is my email address domain?');
         return response()->json(['data' => $response]);
     }
 
