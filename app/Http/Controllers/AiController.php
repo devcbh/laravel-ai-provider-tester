@@ -24,7 +24,7 @@ class AiController extends Controller
     {
         $response = Ai::role('You are a helpful assistant.')
             ->withPiiMasking(true)
-            ->ask('dev.cbh@gmail.com has 5 apples and cv@pisopay.com.ph has 7 oranges kindly summarize the number of fruits by email and format it by json use email as key for index');
+            ->ask('Hi dev.cbh@gmail.com is my email');
 
         return response()->json([
             'answer' => $response
