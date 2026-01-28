@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e2177063c786e685de5614b1fbd07be",
+    "content-hash": "b5f0e477a249188f8ce9b17d438aba38",
     "packages": [
         {
             "name": "brick/math",
@@ -137,16 +137,16 @@
         },
         {
             "name": "devcbh/laravel-ai-provider",
-            "version": "2.2.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devcbh/laravel-ai-provider.git",
-                "reference": "cfb2a95028f8fb0ca87f828c94fb5a8c24641f9f"
+                "reference": "1f558f60e9b9126823421af29ab7d88019ae752b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devcbh/laravel-ai-provider/zipball/cfb2a95028f8fb0ca87f828c94fb5a8c24641f9f",
-                "reference": "cfb2a95028f8fb0ca87f828c94fb5a8c24641f9f",
+                "url": "https://api.github.com/repos/devcbh/laravel-ai-provider/zipball/1f558f60e9b9126823421af29ab7d88019ae752b",
+                "reference": "1f558f60e9b9126823421af29ab7d88019ae752b",
                 "shasum": ""
             },
             "require": {
@@ -186,9 +186,9 @@
             "description": "A Laravel AI wrapper package with multiple provider drivers.",
             "support": {
                 "issues": "https://github.com/devcbh/laravel-ai-provider/issues",
-                "source": "https://github.com/devcbh/laravel-ai-provider/tree/v2.2.0"
+                "source": "https://github.com/devcbh/laravel-ai-provider/tree/v3.0.0"
             },
-            "time": "2026-01-27T10:11:34+00:00"
+            "time": "2026-01-27T10:50:12+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

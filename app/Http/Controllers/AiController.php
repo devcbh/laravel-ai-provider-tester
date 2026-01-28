@@ -23,7 +23,8 @@ class AiController extends Controller
     public function ask()
     {
         $response = Ai::role('You are a helpful assistant.')
-            ->ask('What is the capital of France?');
+            ->withPiiMasking(true)
+            ->ask('dev.cbh@gmail.com has 5 apples and cv@pisopay.com.ph has 7 oranges kindly summarize the number of fruits by email and format it by json use email as key for index');
 
         return response()->json([
             'answer' => $response
@@ -52,7 +53,7 @@ class AiController extends Controller
             Message::assistant('Hello Chupangga! How can I help you today?'),
             Message::user('I am sad.'),
             Message::assistant('I am sorry to hear that your so annoying'),
-        ])->withPiiMasking()->ask('what is my email address domain?');
+        ])->withPiiMasking(false)->ask('what is my email address domain?');
         return response()->json(['data' => $response]);
     }
 
